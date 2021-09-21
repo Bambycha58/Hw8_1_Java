@@ -11,13 +11,14 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.4.2</version>
+            <version>5.7.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -38,15 +39,22 @@
                 <version>0.8.5</version>
                 <executions>
                     <execution>
-                        <id>prepare-agent</id>
+                        <id>prepare-agent-123</id>
                         <phase>initialize</phase>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>check</id>
+                        <id>report-123</id>
                         <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>check-123</id>
+                        <!--                        <phase>verify</phase>-->
                         <goals>
                             <goal>check</goal>
                         </goals>
@@ -55,6 +63,10 @@
                 <configuration>
                     <rules>
                         <rule>
+                            <element>CLASS</element>
+                            <excludes>
+                                <exclude>*Test</exclude>
+                            </excludes>
                             <limits>
                                 <limit>
                                     <counter>BRANCH</counter>
@@ -69,4 +81,3 @@
         </plugins>
     </build>
 </project>
-
