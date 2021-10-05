@@ -1,4 +1,5 @@
 package ru.netology.domain;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -21,7 +22,7 @@ class RadioTest {
 
             }
     )
-    void shouldSetAndGetCurrentWave(int currentWave, int expected){
+    void shouldSetAndGetCurrentWave(int currentWave, int expected) {
 
         radio.setCurrentWave(currentWave);
         assertEquals(expected, radio.getCurrentWave());
@@ -47,7 +48,7 @@ class RadioTest {
                     "9,0"
             }
     )
-    void shouldPressNext(int currentWave, int expected){
+    void shouldPressNext(int currentWave, int expected) {
 
         radio.setCurrentWave(currentWave);
         radio.next();
@@ -72,7 +73,7 @@ class RadioTest {
                     "4,3"
             }
     )
-    void shouldPressPrevious (int currentWave, int expected){
+    void shouldPressPrevious(int currentWave, int expected) {
 
         radio.setCurrentWave(currentWave);
         radio.previous();
@@ -88,7 +89,7 @@ class RadioTest {
                     "110, 0",
                     "100, 100"}
     )
-    void shouldSetAndGetCurrentVolume(int currentVolumeLevel, int expected ){
+    void shouldSetAndGetCurrentVolume(int currentVolumeLevel, int expected) {
 
         radio.setCurrentVolumeLevel(currentVolumeLevel);
         assertEquals(expected, radio.getCurrentVolume());
@@ -100,7 +101,7 @@ class RadioTest {
                     "0, 0",
                     "5, 4"}
     )
-    void shouldMinusCurrentVolume (int currentVolumeLevel, int expected){
+    void shouldMinusCurrentVolume(int currentVolumeLevel, int expected) {
 
         radio.setCurrentVolumeLevel(currentVolumeLevel);
         radio.minusVolume();
@@ -115,11 +116,11 @@ class RadioTest {
                     "0, 1"
             }
     )
-    void shouldPlusCurrentVolume (int currentVolumeLevel, int expected){
+    void shouldPlusCurrentVolume(int currentVolumeLevel, int expected) {
 
         radio.setCurrentVolumeLevel(currentVolumeLevel);
         radio.plusVolume();
         int actual = radio.getCurrentVolume();
-        assertEquals(expected, radio.getCurrentVolume() );
+        assertEquals(expected, radio.getCurrentVolume());
     }
 }

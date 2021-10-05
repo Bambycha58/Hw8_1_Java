@@ -9,11 +9,12 @@ public class Radio {
     private int maxVolumeLevel = 100;
     private int currentVolumeLevel;
 
-    public Radio(int amountRadioWave, int maxRadioWave) {
+    public Radio(int amountRadioWave, int maxWave) {
         this.amountRadioWave = amountRadioWave;
         this.maxWave = amountRadioWave - 1;
     }
-    public Radio(){
+
+    public Radio() {
 
     }
 
