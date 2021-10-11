@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     Radio radio = new Radio();
-    Radio radio1 = new Radio(15, 14);
+    Radio radio1 = new Radio(15);
 
 
     @ParameterizedTest

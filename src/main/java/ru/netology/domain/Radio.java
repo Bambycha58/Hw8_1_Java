@@ -9,7 +9,7 @@ public class Radio {
     private int maxVolumeLevel = 100;
     private int currentVolumeLevel;
 
-    public Radio(int amountRadioWave, int maxWave) {
+    public Radio(int amountRadioWave) {
         this.amountRadioWave = amountRadioWave;
         this.maxWave = amountRadioWave - 1;
     }
