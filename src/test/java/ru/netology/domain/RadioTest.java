@@ -1,4 +1,5 @@
 package ru.netology.domain;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -6,6 +7,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
+
+    Radio radio = new Radio();
+    Radio radio1 = new Radio(15);
 
 
     @ParameterizedTest
@@ -18,10 +22,24 @@ class RadioTest {
 
             }
     )
-    void shouldSetAndGetCurrentWave(int currentWave, int expected){
-        Radio radio = new Radio();
+    void shouldSetAndGetCurrentWave(int currentWave, int expected) {
+
         radio.setCurrentWave(currentWave);
         assertEquals(expected, radio.getCurrentWave());
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            value = {"-1, 0",
+                    "0, 0",
+                    "5, 5",
+                    "15, 0",
+                    "14, 14"
+            }
+    )
+    void shouldSetAndGetCurrentRadioWave1(int currentRadioWave, int expected) {
+        radio1.setCurrentWave(currentRadioWave);
+        assertEquals(expected, radio1.getCurrentWave());
     }
 
     @ParameterizedTest
@@ -30,11 +48,23 @@ class RadioTest {
                     "9,0"
             }
     )
-    void shouldPressNext(int currentWave, int expected){
-        Radio radio = new Radio();
+    void shouldPressNext(int currentWave, int expected) {
+
         radio.setCurrentWave(currentWave);
         radio.next();
         assertEquals(expected, radio.getCurrentWave());
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            value = {"4, 5",
+                    "14, 0"
+            }
+    )
+    void shouldPressNext1(int currentRadioWave, int expected) {
+        radio1.setCurrentWave(currentRadioWave);
+        radio1.next();
+        assertEquals(expected, radio1.getCurrentWave());
     }
 
     @ParameterizedTest
@@ -43,8 +73,8 @@ class RadioTest {
                     "4,3"
             }
     )
-    void shouldPressPrevious (int currentWave, int expected){
-        Radio radio = new Radio();
+    void shouldPressPrevious(int currentWave, int expected) {
+
         radio.setCurrentWave(currentWave);
         radio.previous();
         assertEquals(expected, radio.getCurrentWave());
@@ -56,23 +86,23 @@ class RadioTest {
             value = {"-1, 0",
                     "0, 0",
                     "5, 5",
-                    "11, 0",
-                    "10, 10"}
+                    "110, 0",
+                    "100, 100"}
     )
-    void shouldSetAndGetCurrentVolume(int currentVolumeLevel, int expected ){
-        Radio radio = new Radio();
+    void shouldSetAndGetCurrentVolume(int currentVolumeLevel, int expected) {
+
         radio.setCurrentVolumeLevel(currentVolumeLevel);
         assertEquals(expected, radio.getCurrentVolume());
     }
 
     @ParameterizedTest
     @CsvSource(
-            value = {"10,9",
+            value = {"100,99",
                     "0, 0",
                     "5, 4"}
     )
-    void shouldMinusCurrentVolume (int currentVolumeLevel, int expected){
-        Radio radio = new Radio();
+    void shouldMinusCurrentVolume(int currentVolumeLevel, int expected) {
+
         radio.setCurrentVolumeLevel(currentVolumeLevel);
         radio.minusVolume();
         int actual = radio.getCurrentVolume();
@@ -81,14 +111,16 @@ class RadioTest {
 
     @ParameterizedTest
     @CsvSource(
-            value = {"10, 10",
-                    "5, 6"}
+            value = {"100, 100",
+                    "5, 6",
+                    "0, 1"
+            }
     )
-    void shouldPlusCurrentVolume (int currentVolumeLevel, int expected){
-        Radio radio = new Radio();
+    void shouldPlusCurrentVolume(int currentVolumeLevel, int expected) {
+
         radio.setCurrentVolumeLevel(currentVolumeLevel);
         radio.plusVolume();
         int actual = radio.getCurrentVolume();
-        assertEquals(expected, radio.getCurrentVolume() );
+        assertEquals(expected, radio.getCurrentVolume());
     }
 }

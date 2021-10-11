@@ -2,11 +2,21 @@ package ru.netology.domain;
 
 public class Radio {
     private int minWave = 0;
+    private int amountRadioWave = 10;
     private int maxWave = 9;
     private int currentWave;
     private int minVolumeLevel = 0;
-    private int maxVolumeLevel = 10;
+    private int maxVolumeLevel = 100;
     private int currentVolumeLevel;
+
+    public Radio(int amountRadioWave) {
+        this.amountRadioWave = amountRadioWave;
+        this.maxWave = amountRadioWave - 1;
+    }
+
+    public Radio() {
+
+    }
 
     public void setCurrentWave(int currentWave) {
         if (currentWave > maxWave || currentWave < minWave) {
